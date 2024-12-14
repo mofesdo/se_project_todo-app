@@ -9,19 +9,25 @@ class FormValidator{
         }
 
         //TODO implement all other methods
-        
-        __checkInputValidity(inputElement){
+
+        _showInputError(inputElement){
+            const errorElementId = `#${inputElement.id}-error`;
+            const errorElement = this._formEl.querySelector(errorElementId);
+            inputElement.classList.add(this._inputErrorClass);
+            errorElement.textContent = inputElement.validationMessage;
+            errorElement.classList.add(this._errorClass);
+        }
+        _hideInputError(inputElement){
+
+        }
+        _checkInputValidity(inputElement){
             //TODO implement method (1)
-            // if (!inputElement.validity.valid) {
-            //     showInputError(
-            //       formElement,
-            //       inputElement,
-            //       inputElement.validationMessage,
-            //       settings,
-            //     );
-            //   } else {
-            //     hideInputError(formElement, inputElement, settings);
-            //   }
+            console.log(inputElement);
+            if (!inputElement.validity.valid) {
+                this._showInputError(inputElement);
+              } else {
+                this._hideInputError(inputElement);
+              }
         }
         _setEventListeners(){
             const inputList = Array.from(
@@ -34,9 +40,9 @@ class FormValidator{
             
             //   toggleButtonState(inputList, buttonElement, settings);
             
-              this._inputList.forEach((inputElement) => {
+              inputList.forEach((inputElement) => {
                 inputElement.addEventListener("input", () => {
-                  this._checkInputValidity();
+                  this._checkInputValidity(inputElement);
                 //   toggleButtonState(inputList, buttonElement, settings);
                 });
               });
