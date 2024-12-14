@@ -1,17 +1,17 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+Simple To-do application
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+Allows users to create todos with optional deadlines. Users can mark todos as completed and delete todos from their list.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+Using javascript objects to dynamically create todos and append them to the todo list in the DOM.
 
 ## Deployment
 
 This project is deployed on GitHub Pages:
 
-- ADD LINK HERE
+- [https://mofesdo.github.io/se_project_todo-app/]
