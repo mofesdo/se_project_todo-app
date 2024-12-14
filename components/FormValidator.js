@@ -8,7 +8,20 @@ class FormValidator{
         this._formEl = formEl;
         }
 
-        //TODO implement all other methods
+        _hasInvalidInput(inputList){
+            return inputList.some((inputElement) => {
+                return !inputElement.validity.valid;
+              });
+        }
+        _toggleButtonState(inputList, buttonElement){
+            if (this._hasInvalidInput(inputList)) {
+                buttonElement.classList.add(this._inactiveButtonClass);
+                buttonElement.disabled = true;
+              } else {
+                buttonElement.classList.remove(this._inactiveButtonClass);
+                buttonElement.disabled = false;
+              }
+        }
 
         _showInputError(inputElement){
             const errorElementId = `#${inputElement.id}-error`;
@@ -25,8 +38,6 @@ class FormValidator{
             errorElement.textContent = "";
         }
         _checkInputValidity(inputElement){
-            //TODO implement method (1)
-            console.log(inputElement);
             if (!inputElement.validity.valid) {
                 this._showInputError(inputElement);
               } else {
@@ -38,16 +49,13 @@ class FormValidator{
                 this._formEl.querySelectorAll(this._inputSelector),
               );
               //TODO - finish implementing seteventlisteners (2)
-            //   const buttonElement = formElement.querySelector(
-            //     settings.submitButtonSelector,
-            //   );
-            
-            //   toggleButtonState(inputList, buttonElement, settings);
+              const buttonElement = this._formEl.querySelector(this._submitButtonSelector);
+              this._toggleButtonState(inputList, buttonElement);
             
               inputList.forEach((inputElement) => {
                 inputElement.addEventListener("input", () => {
                   this._checkInputValidity(inputElement);
-                //   toggleButtonState(inputList, buttonElement, settings);
+                   this._toggleButtonState(inputList, buttonElement);
                 });
               });
         }
