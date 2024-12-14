@@ -9,7 +9,9 @@ class Todo{
             this._data.completed = !this._data.completed;
             console.log(this._data.completed);
         });
-        //TODO - set up delete button handler
+        this._todoDeleteBtn.addEventListener("click", () => {
+            this._todoElement.remove();
+        });
     }
 
     _generateCheckboxEl(){
@@ -27,10 +29,11 @@ class Todo{
 
         const todoNameEl = this._todoElement.querySelector(".todo__name");
         const todoDate = this._todoElement.querySelector(".todo__date");
-        const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+        this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
         todoNameEl.textContent = this._data.name;
-        //TODO - implement dates
+        todoDate.textContent = `Due: ${this._data.date.toDateString()}`;
+        console.log(this._data);
 
         
        this._generateCheckboxEl();
