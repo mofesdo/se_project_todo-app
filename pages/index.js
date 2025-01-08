@@ -43,6 +43,7 @@ const generateTodo = (data) => {
   return todoElement;
 };
 
+
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
 });
