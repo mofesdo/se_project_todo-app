@@ -35,6 +35,7 @@ class Todo {
     const todoDate = this._todoElement.querySelector(".todo__date");
     this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
+    console.log(this._data);
     todoNameEl.textContent = this._data.name;
     todoDate.textContent = `Due: ${this._data.date.toDateString()}`;
     console.log(this._data);

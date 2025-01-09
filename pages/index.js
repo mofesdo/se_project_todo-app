@@ -16,22 +16,19 @@ const todoCounter = new TodoCounter(initialTodos,".counter__text");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: (values) => {
-    console.log(values);
-    // const name = values.target.name.value;
-    // console.log(name);
-    // const dateInput = values.target.date.value;
-    // // Create a date object and adjust for timezone
-    // const date = new Date(dateInput);
-    // date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+  handleFormSubmit: (item) => {
+    const name = item.name;
+    const dateInput = item.date;
+    const date = new Date(dateInput);
+    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
-    // const id = uuidv4();
+    const id = uuidv4();
 
-    // //const values = { name, date, id };
-    // const todo = generateTodo(values);
-    // todosList.append(todo); //use addItem method instead
+    const values = { name, date, id };
+    const todo = generateTodo(values);
+    section.addItem(todo);
 
-    // addTodoValidator.resetValidation();
+    addTodoValidator.resetValidation();
 
     addTodoPopup.close();
   },
