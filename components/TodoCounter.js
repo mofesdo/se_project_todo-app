@@ -3,8 +3,11 @@ class TodoCounter {
     // selector is the selector for the counter text element
     constructor(todos, selector) {
       this._element = document.querySelector(selector);
-      this._completed = 0;// number of completed todos
-      this._total = 0;// the total number of todos
+      this._completed = todos.filter((todo)=> todo.completed).length;// number of completed todos
+      this._total = todos.length;
+      console.log(this._element);
+      console.log(this._completed);
+      console.log(this._total);
     }
     
     // Call this when a checkbox is clicked, and when a completed
