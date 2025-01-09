@@ -13,23 +13,23 @@ const todosList = document.querySelector(".todos__list");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: (evt) => {
+  handleFormSubmit: (values) => {
     console.log("in index.js");
-    const name = evt.target.name.value;
-    const dateInput = evt.target.date.value;
-    // Create a date object and adjust for timezone
-    const date = new Date(dateInput);
-    date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+    // const name = evt.target.name.value;
+    // const dateInput = evt.target.date.value;
+    // // Create a date object and adjust for timezone
+    // const date = new Date(dateInput);
+    // date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
 
-    const id = uuidv4();
+    // const id = uuidv4();
 
-    const values = { name, date, id };
-    const todo = generateTodo(values);
-    todosList.append(todo); //use addItem method instead
+    // const values = { name, date, id };
+    // const todo = generateTodo(values);
+    // todosList.append(todo); //use addItem method instead
 
-    addTodoValidator.resetValidation();
+    // addTodoValidator.resetValidation();
 
-    addTodoPopup.close();
+    // addTodoPopup.close();
   },
 });
 addTodoPopup.setEventListeners();
