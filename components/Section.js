@@ -11,8 +11,6 @@ class Section{
         });
     }
     addItem(element){
-        //add element to container
-            //const todo = generateTodo(item);
         this._container.append(element);
     }
 }

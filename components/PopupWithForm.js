@@ -4,11 +4,9 @@ class PopupWithForm extends Popup{
         super({popupSelector});
         this._popupForm = this._popupEl.querySelector(".popup__form")
         this._handleFormSubmit = handleFormSubmit;
+        this._inputList = this._popupForm.querySelectorAll(".popup__input");
     }
     _getInputValues(){
-        //move to constructor
-        this._inputList = this._popupForm.querySelectorAll(".popup__input");
-
         const values = {};
         console.log(this._inputList);
         this._inputList.forEach((input) => {
@@ -17,6 +15,7 @@ class PopupWithForm extends Popup{
             //the key is input.name
             //value is input.value;
             //need to use brackets notation, not dot notation
+            values[input.name] = input.value;
         });
         return values;
     }
@@ -26,7 +25,7 @@ class PopupWithForm extends Popup{
             evt.preventDefault();
             const inputValues = this._getInputValues();
             //pass result of _getInputValues to submission handler
-            this._handleFormSubmit(evt);
+            this._handleFormSubmit(inputValues);
         });
     }
 }
