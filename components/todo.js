@@ -9,7 +9,6 @@ class Todo {
   _setEventListeners() {
     this._todoCheckboxEl.addEventListener("change", () => {
       this._data.completed = !this._data.completed;
-      console.log(this._data.completed);
       this._handleCheck(this._data.completed);
     });
     this._todoDeleteBtn.addEventListener("click", () => {
@@ -35,10 +34,8 @@ class Todo {
     const todoDate = this._todoElement.querySelector(".todo__date");
     this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
-    console.log(this._data);
     todoNameEl.textContent = this._data.name;
     todoDate.textContent = `Due: ${this._data.date.toDateString()}`;
-    console.log(this._data);
 
     this._generateCheckboxEl();
     this._setEventListeners();

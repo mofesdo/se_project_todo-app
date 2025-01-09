@@ -12,7 +12,7 @@ const addTodoForm = addTodoPopupEl.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopupEl.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
-const todoCounter = new TodoCounter(initialTodos,".counter__text");
+const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
@@ -47,19 +47,11 @@ const section = new Section({
 });
 section.renderItems();
 
-// const openModal = (modal) => {
-//   modal.classList.add("popup_visible");
-// };
-
-// const closeModal = (modal) => {
-//   modal.classList.remove("popup_visible");
-// };
-
-function handleCheck(completed){
+function handleCheck(completed) {
   todoCounter.updateCompleted(completed);
 }
-function handleDelete(completed){
-  if(completed){
+function handleDelete(completed) {
+  if (completed) {
     todoCounter.updateCompleted(false);
   }
   todoCounter.updateTotal(false);
@@ -72,38 +64,9 @@ const generateTodo = (data) => {
   return todoElement;
 };
 
-
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
 });
-
-// addTodoCloseBtn.addEventListener("click", () => {
-//   addTodoPopup.close();
-// });
-
-// addTodoForm.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
-//   const name = evt.target.name.value;
-//   const dateInput = evt.target.date.value;
-//   // Create a date object and adjust for timezone
-//   const date = new Date(dateInput);
-//   date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
-
-//   const id = uuidv4();
-
-//   const values = { name, date, id };
-//   const todo = generateTodo(values);
-//   todosList.append(todo); //use addItem method instead
-
-//   addTodoValidator.resetValidation();
-
-//   addTodoPopup.close();
-// });
-
-// initialTodos.forEach((item) => {
-//   const todo = generateTodo(item);
-//   todosList.append(todo); //use addItem method instead
-// });
 
 const addTodoValidator = new FormValidator(validationConfig, addTodoForm);
 addTodoValidator.enableValidation();
