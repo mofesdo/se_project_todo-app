@@ -23,6 +23,7 @@ class TodoCounter {
       // if increment is true, add 1 to this._total. Otherwise, 
       // subtract 1. In either case, call the method to update the  
       // text content.  
+      this._total += increment ? 1 : -1;
 
       this._updateText();
     };
