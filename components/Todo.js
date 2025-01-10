@@ -35,7 +35,13 @@ class Todo {
     this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
 
     todoNameEl.textContent = this._data.name;
-    todoDate.textContent = `Due: ${this._data.date.toDateString()}`;
+    if(this._data.date == "Invalid Date"){
+      todoDate.textContent = "";
+    }
+    else{
+      todoDate.textContent = `Due: ${this._data.date.toDateString()}`;
+    }
+    
 
     this._generateCheckboxEl();
     this._setEventListeners();

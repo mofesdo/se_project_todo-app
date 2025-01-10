@@ -14,6 +14,15 @@ const todosList = document.querySelector(".todos__list");
 
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
+const generateTodo = (data) => {
+  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
+  const todoElement = todo.getView();
+  return todoElement;
+};
+const renderTodo = (item) => {
+  const todo = generateTodo(item);
+  section.addItem(todo);
+};
 const addTodoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
   handleFormSubmit: (item) => {
@@ -25,8 +34,7 @@ const addTodoPopup = new PopupWithForm({
     const id = uuidv4();
 
     const values = { name, date, id };
-    const todo = generateTodo(values);
-    section.addItem(todo);
+    renderTodo(values);
     todoCounter.updateTotal(item);
 
     addTodoValidator.resetValidation();
@@ -39,9 +47,7 @@ addTodoPopup.setEventListeners();
 const section = new Section({
   items: initialTodos,
   renderer: (data) => {
-    const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
-    const todoElement = todo.getView();
-    section.addItem(todoElement);
+    renderTodo(data);
   },
   containerSelector: ".todos__list",
 });
@@ -56,13 +62,6 @@ function handleDelete(completed) {
   }
   todoCounter.updateTotal(false);
 }
-
-// The logic in this function should all be handled in the Todo class.
-const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template", handleCheck, handleDelete);
-  const todoElement = todo.getView();
-  return todoElement;
-};
 
 addTodoButton.addEventListener("click", () => {
   addTodoPopup.open();
